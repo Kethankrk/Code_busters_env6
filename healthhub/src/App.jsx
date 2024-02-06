@@ -8,6 +8,8 @@ import Signup from './pages/SignupPage/Signup'
 import Layout from './components/layout'
 import Opbooking from './pages/opBooking/Opbooking'
 import Dietplan from './pages/Dietplan/Dietplan'
+import Nutrition from './pages/Nutrition/nutrition'
+import Medicinedetails from './pages/MedicineDetails/medicinedetails'
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path='service' element={<Services />} />
           <Route path='opbooking' element={<Opbooking/>}/>
           <Route path='dietplan' element={<Dietplan/>}/>
+          <Route path='nuetrition' element={<Nutrition/>}/>
+          <Route path='medicine' element={<Medicinedetails/>}/>
           
           </Route>
           <Route path='/signup' element={<Signup />} />

@@ -50,12 +50,12 @@ const Services = () => {
               </div>
               <h1 className='text-center font-bold'>Medical history</h1>
             </div>
-            <div className='col-span-1  flex flex-col '>
+            <Link to="/medicine" className='col-span-1  flex flex-col '>
               <div className='bg-green-400 p-3 rounded-2xl shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]'>
                 <img className='opacity-75' src={medicineIcon} alt='' />
               </div>
               <h1 className='text-center font-bold'>Medicine details </h1>
-            </div>
+            </Link>
             <div className='col-span-1  flex flex-col '>
               <div className='bg-green-400 p-3 rounded-2xl shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]'>
                 <img className='opacity-75' src={chatbot} alt='' />
@@ -91,12 +91,12 @@ const Services = () => {
               </div>
               <h1 className='text-center font-bold'>BMI Calculator</h1>
             </div>
-            <div className='col-span-1  flex flex-col '>
+            <Link to='/nuetrition' className='col-span-1  flex flex-col '>
               <div className='bg-blue-400 p-3 rounded-2xl shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]'>
                 <img className='opacity-75' src={food} alt='' />
               </div>
               <h1 className='text-center font-bold'>Nutrition Calculator</h1>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

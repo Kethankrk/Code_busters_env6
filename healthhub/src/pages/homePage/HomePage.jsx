@@ -49,7 +49,7 @@ const HomePage = () => {
         </div>
 
         <div className='w-full grid grid-cols-2 gap-5 mt-5 '>
-          <div className='col-span-1 p-3 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] rounded-2xl flex flex-col  '>
+          <Link to='/nuetrition' className='col-span-1 p-3 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] rounded-2xl flex flex-col  '>
             <div className='w-full flex justify-center'>
               <img src={food} alt='' className='w-1/2' />
             </div>
@@ -59,7 +59,7 @@ const HomePage = () => {
                 Find the micro and the macro in your food.
               </h1>
             </div>
-          </div>
+          </Link>
           <div className='col-span-1 p-3  shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] rounded-2xl flex flex-col  '>
             <div className='w-full flex justify-center'>
               <img src={bmi} alt='' className='w-1/2' />
