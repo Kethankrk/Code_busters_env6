@@ -6,6 +6,7 @@ const Signup = () => {
     <div className='w-full h-screen flex-col flex justify-center items-center bg-gradient-to-r from-indigo-400 to-cyan-400'>
       <img src={logo} alt='' />
       <form className='flex flex-col gap-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-7 rounded-xl bg-white'>
+      <h1 className='text-center font-bold text-2xl'>Sign up</h1>
         <div>
           <label for='name' className='block mb-2 text-sm'>
             Name
@@ -91,6 +92,17 @@ const Signup = () => {
           >
             Sign up
           </button>
+          <p className='px-6 text-sm text-center text-gray-600'>
+          Is you have an account already?
+          <a
+            rel='noopener noreferrer'
+            href='#'
+            className='hover:underline text-violet-600'
+          >
+            Sign in
+          </a>
+          .
+        </p>
         </div>
       </form>
     </div>

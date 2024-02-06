@@ -22,9 +22,8 @@ const HomePage = () => {
     { url: 'images/7.jpg' },
   ]
   return (
-    <div className='w-full relative h-screen '>
-      <TopNavbar />
-      {/*------------------------------------- home screen content section start---------------------------------*/}
+  
+      
 
       <div className='px-4 flex flex-col items-center pb-28'>
         <img src={landingSvg} alt='' className='mt-5' />
@@ -42,7 +41,7 @@ const HomePage = () => {
           </div>
 
           <Link
-            to='#'
+            to='/opbooking'
             className='w-full bg-blue-500 py-2 text-white text-center rounded-full font-bold  shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px]'
           >
             Search
@@ -55,7 +54,7 @@ const HomePage = () => {
               <img src={food} alt='' className='w-1/2' />
             </div>
             <div className=''>
-              <h1 className='font-bold text-lg'>Macro & Micro</h1>
+              <h1 className='font-bold text-lg'>Nutrition Calculator</h1>
               <h1 className=' text-sm opacity-60'>
                 Find the micro and the macro in your food.
               </h1>
@@ -108,10 +107,9 @@ const HomePage = () => {
       />
      </div> */}
       </div>
-      {/*------------------------------------- home screen content section end ---------------------------------*/}
 
-      <BottomNav />
-    </div>
+
+     
   )
 }
 
