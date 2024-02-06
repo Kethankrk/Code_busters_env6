@@ -15,9 +15,11 @@ const Opbooking = () => {
         { value: 'vanilla', label: 'Vanilla' }
       ] 
     return (
-        <div className='p-4 flex flex-col mt-3 pb-36'>
+        <div className='p-4 flex flex-col mt-3 pb-36 '>
                <div className="flex  mb-6"><img src={Tiket} alt="" srcset="" className='w-9' /> <h1 className='font-bold text-2xl'>Book OP ticket</h1></div>
-            <img src={opLand} alt="" />
+            <div className="flex justify-center">
+            <img src={opLand} alt=""  className='w-3/4'/>
+            </div>
           
 
             <form className="flex flex-col gap-3 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] w-full rounded-2xl p-5">

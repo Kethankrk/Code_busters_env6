@@ -10,7 +10,7 @@ const Dietplan = () => {
                     <div className=""><h1 className='font-bold text-2xl'>Diet planner</h1>
                 <p>Create your own diet be healthy</p></div>
                 </div>
-
+                    
 
             </div>
         </div>
