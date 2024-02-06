@@ -1,12 +1,79 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/logo.png'
+import axios from 'axios'
 
 const Signup = () => {
+  const [Name, setName] = useState('')
+  const [Password, setPassword] = useState('')
+  const [Address, setAddress] = useState('')
+  const [Date, setDate] = useState('')
+  const [Phone, setPhone] = useState('')
+  const [Email, setEmail] = useState('')
+  const [isloading, setIsLoading] = useState(true)
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if ((!Name, !Password, !Address, !Date, !Phone, !Email)) return
+
+    const userData = {
+      name: Name,
+      password: Password,
+      address: Address,
+      date_of_birth: Date,
+      phone: Phone,
+      email: Email,
+      role: 'patient',
+    }
+
+    const res = await axios.post('http://localhost:8000/api/signup/', userData)
+    const userId = res.data.id
+    userData['user'] = userId
+
+    const profile = await axios.post(
+      'http://localhost:8000/api/patient/profile/',
+      userData,
+    )
+    console.log(profile.data)
+    console.log(res.data)
+    const cred = {
+      phone: Phone,
+      password: Password,
+    }
+    const tokens = await (
+      await axios.post('http://localhost:8000/login/', cred)
+    ).data
+    localStorage.setItem('token', tokens.access)
+    localStorage.setItem('refreshToken', tokens.refresh)
+    localStorage.setItem('name', Name)
+    navigate('/')
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      navigate('/')
+    } else {
+      setIsLoading(false)
+    }
+  }, [])
+
+  if (isloading) {
+    return (
+      <div className='flex justify-center items-center h-screen'>
+        <p className='text-center font-semibold text-2xl'>Loading</p>
+      </div>
+    )
+  }
   return (
     <div className='w-full h-screen flex-col flex justify-center items-center bg-gradient-to-r from-indigo-400 to-cyan-400'>
       <img src={logo} alt='' />
-      <form className='flex flex-col gap-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-7 rounded-xl bg-white'>
-      <h1 className='text-center font-bold text-2xl'>Sign up</h1>
+      <form
+        className='flex flex-col gap-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-7 rounded-xl bg-white'
+        onSubmit={handleSubmit}
+      >
+        <h1 className='text-center font-bold text-2xl'>Sign up</h1>
         <div>
           <label for='name' className='block mb-2 text-sm'>
             Name
@@ -18,6 +85,8 @@ const Signup = () => {
             id='name'
             placeholder='Enter your name'
             className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800'
+            onChange={(e) => setName(e.target.value)}
+            value={Name}
           />
         </div>
         <div>
@@ -31,6 +100,8 @@ const Signup = () => {
             id='phone'
             placeholder='+91 ****** ****'
             className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800'
+            onChange={(e) => setPhone(e.target.value)}
+            value={Phone}
           />
         </div>
         <div>
@@ -44,6 +115,8 @@ const Signup = () => {
             id='email'
             placeholder='abhi@email.com'
             className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800'
+            onChange={(e) => setEmail(e.target.value)}
+            value={Email}
           />
         </div>
         <div>
@@ -57,6 +130,8 @@ const Signup = () => {
             id='birthdate'
             placeholder='+91 ****** ****'
             className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800'
+            onChange={(e) => setDate(e.target.value)}
+            value={Date}
           />
         </div>
         <div>
@@ -70,6 +145,8 @@ const Signup = () => {
             id='address'
             placeholder='Enter your address'
             className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800'
+            onChange={(e) => setAddress(e.target.value)}
+            value={Address}
           />
         </div>
         <div>
@@ -83,6 +160,8 @@ const Signup = () => {
             id='password'
             placeholder='******'
             className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800'
+            onChange={(e) => setPassword(e.target.value)}
+            value={Password}
           />
         </div>
         <div>
@@ -93,16 +172,16 @@ const Signup = () => {
             Sign up
           </button>
           <p className='px-6 text-sm text-center text-gray-600'>
-          Is you have an account already?
-          <a
-            rel='noopener noreferrer'
-            href='#'
-            className='hover:underline text-violet-600'
-          >
-            Sign in
-          </a>
-          .
-        </p>
+            Is you have an account already?
+            <a
+              rel='noopener noreferrer'
+              href='#'
+              className='hover:underline text-violet-600'
+            >
+              Sign in
+            </a>
+            .
+          </p>
         </div>
       </form>
     </div>
