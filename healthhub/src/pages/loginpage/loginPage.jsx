@@ -1,10 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../../assets/logo.png'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 const LoginPage = () => {
+  const [number, setNumber] = useState('')
+  const [password, setpassword] = useState('')
+  const navigation = useNavigate()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    try {
+      if (!number || !password) return
+      const data = {
+        phone: number,
+        password,
+      }
+      const tokens = await (
+        await axios.post('http://localhost:8000/login/', data)
+      ).data
+      const accessToken = tokens.access
+      localStorage.setItem('token', accessToken)
+      console.log(accessToken)
+      navigation('/')
+    } catch (error) {
+      console.log(error)
+      alert('something went wrong')
+    }
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      navigation('/')
+    }
+  }, [])
   return (
     <div className='w-full h-screen flex-col flex justify-center items-center bg-gradient-to-r from-indigo-400 to-cyan-400'>
       <img src={logo} alt='' />
-      <form className='flex flex-col gap-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-7 rounded-xl bg-white'>
+      <form
+        className='flex flex-col gap-3 shadow-[0_3px_10px_rgb(0,0,0,0.2)] p-7 rounded-xl bg-white'
+        onSubmit={handleSubmit}
+      >
         <h1 className='text-center font-bold text-2xl'>Sign in</h1>
         <div>
           <label for='phone' className='block mb-2 text-sm'>
@@ -17,6 +53,8 @@ const LoginPage = () => {
             id='phone'
             placeholder='+91 ****** ****'
             className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800'
+            onChange={(e) => setNumber(e.target.value)}
+            value={number}
           />
         </div>
         <div>
@@ -39,6 +77,8 @@ const LoginPage = () => {
             id='password'
             placeholder='*****'
             className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800'
+            onChange={(e) => setpassword(e.target.value)}
+            value={password}
           />
         </div>
         <div>
