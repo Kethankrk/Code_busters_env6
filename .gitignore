@@ -25,3 +25,6 @@ healthbub/settings/local.py
 
 collegeApp/
 travelbuddy/
+
+healthhub/node_modules/
+healthhub/te/
