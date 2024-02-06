@@ -1,0 +1,27 @@
+# Virtual Environment
+venv/
+healthbub/env/
+
+
+# IDE/Editor files
+healthbub/.vscode/
+healthbub/.idea/
+healthbub/*.pyc
+healthbub/__pycache__/
+
+# Logs and Temporary Files
+healthbub/*.log
+healthbub/*.pyo
+healthbub/*.pyc
+healthbub/*.db
+
+# Secrets and Configuration
+healthbub/.env
+healthbub/settings/local.py
+
+
+# Django Migrations
+*/migrations/
+
+collegeApp/
+travelbuddy/
