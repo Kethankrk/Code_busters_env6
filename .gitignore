@@ -29,3 +29,5 @@ travelbuddy/
 
 healthhub/node_modules/
 healthhub/te/
+healthhub/.env
+adminui/.env
