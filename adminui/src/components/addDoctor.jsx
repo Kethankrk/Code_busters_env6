@@ -17,10 +17,9 @@ function AddDoctor({ setAddDoctor }) {
         qualification,
         hospital: hospitalId,
       }
-      const res = await axios.post(
-        'http://localhost:8000/api/hospital/add-doctor/',
-        req,
-      )
+      const api = import.meta.env.VITE_API
+
+      const res = await axios.post(`${api}api/hospital/add-doctor/`, req)
       console.log(res.data)
       setAddDoctor(false)
     } catch (error) {
