@@ -6,7 +6,6 @@ const LoginPage = () => {
   const [number, setNumber] = useState('')
   const [password, setpassword] = useState('')
   const navigation = useNavigate()
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
@@ -15,9 +14,8 @@ const LoginPage = () => {
         phone: number,
         password,
       }
-      const tokens = await (
-        await axios.post('http://localhost:8000/login/', data)
-      ).data
+      const api = import.meta.env.VITE_API
+      const tokens = (await axios.post(`${api}login/`, data)).data
       const accessToken = tokens.access
       localStorage.setItem('token', accessToken)
       console.log(accessToken)

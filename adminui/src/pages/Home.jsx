@@ -14,26 +14,20 @@ function HomePage() {
   useEffect(() => {
     ;(async () => {
       try {
+        const api = import.meta.env.VITE_API
         const token = localStorage.getItem('token')
-        const result = (
-          await axios.get('http://localhost:8000/api/hospital/request/')
-        ).data
+        const result = (await axios.get(`${api}api/hospital/request/`)).data
         setUserReq(result)
 
-        const lol = await axios.get(
-          'http://localhost:8000/api/hospital/add-doctor/',
-        )
+        const lol = await axios.get(`${api}api/hospital/add-doctor/`)
         setDoctor(lol.data)
         console.log(lol.data)
 
-        const doode = await axios.get(
-          'http://localhost:8000/api/hospital/get-id/',
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        const doode = await axios.get(`${api}api/hospital/get-id/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        )
+        })
 
         localStorage.setItem('hospitalId', doode.data.id)
 
@@ -50,6 +44,13 @@ function HomePage() {
   }
   return (
     <main className='bg-slate-900 min-h-screen flex'>
+      <div
+        className={`absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-55 flex justify-center items-center z-10 ${
+          addDoctor ? 'visible' : 'hidden'
+        }`}
+      >
+        <AddDoctor setAddDoctor={setAddDoctor} />
+      </div>
       <div
         className={`absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-55 flex justify-center items-center z-10 ${
           addDoctor ? 'visible' : 'hidden'

@@ -15,8 +15,9 @@ const LoginPage = () => {
         phone: number,
         password,
       }
+      const api = import.meta.env.VITE_API
       const tokens = await (
-        await axios.post('http://localhost:8000/login/', data)
+        await axios.post(`${api}login/`, data)
       ).data
       const accessToken = tokens.access
       localStorage.setItem('token', accessToken)
