@@ -30,7 +30,7 @@ class HospitalProfileView(CreateAPIView):
     serializer_class = HospitalProfileSerializer
 
 
-class AddDoctorView(CreateAPIView):
+class AddDoctorView(ListCreateAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmpolyeeSerializer
 

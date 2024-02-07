@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import logo from '../../assets/logo.png'
+import logo from '../../../healthhub/src/assets/logo.png'
 import axios from 'axios'
 
 const Signup = () => {
   const [Name, setName] = useState('')
   const [Password, setPassword] = useState('')
   const [Address, setAddress] = useState('')
-  const [Date, setDate] = useState('')
   const [Phone, setPhone] = useState('')
   const [Email, setEmail] = useState('')
   const [isloading, setIsLoading] = useState(true)
@@ -15,16 +14,15 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if ((!Name, !Password, !Address, !Date, !Phone, !Email)) return
+    if ((!Name, !Password, !Address, !Phone, !Email)) return
 
     const userData = {
       name: Name,
       password: Password,
       address: Address,
-      date_of_birth: Date,
       phone: Phone,
       email: Email,
-      role: 'patient',
+      role: 'hospital',
     }
 
     const res = await axios.post('http://localhost:8000/api/signup/', userData)
@@ -32,7 +30,7 @@ const Signup = () => {
     userData['user'] = userId
 
     const profile = await axios.post(
-      'http://localhost:8000/api/patient/profile/',
+      'http://localhost:8000/api/hospital/profile/',
       userData,
     )
     console.log(profile.data)
@@ -117,21 +115,6 @@ const Signup = () => {
             className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800'
             onChange={(e) => setEmail(e.target.value)}
             value={Email}
-          />
-        </div>
-        <div>
-          <label for='birthdate' className='block mb-2 text-sm'>
-            Date of birth
-          </label>
-          <input
-            required
-            type='date'
-            name='birthdate'
-            id='birthdate'
-            placeholder='+91 ****** ****'
-            className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800'
-            onChange={(e) => setDate(e.target.value)}
-            value={Date}
           />
         </div>
         <div>

@@ -8,4 +8,5 @@ urlpatterns = [
     path("api/hospital/", include("hospital.urls")),
     path("api/", include("users.urls")),
     path("refresh/", TokenRefreshView.as_view()),
+    path("patient/", include("patient.urls")),
 ]

@@ -1,6 +1,7 @@
 # Virtual Environment
 venv/
 healthbub/env/
+adminui/node_modules/
 
 
 # IDE/Editor files
