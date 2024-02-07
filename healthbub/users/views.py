@@ -34,3 +34,9 @@ class AddDoctorView(ListCreateAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmpolyeeSerializer
 
+
+class GetUserId(APIView):
+    authentication_classes = [JWTAuthentication]
+    def get(self, request):
+        user = request.user
+        return Response({"id": user.id})
