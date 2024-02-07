@@ -37,6 +37,8 @@ class AddDoctorView(ListCreateAPIView):
 
 class GetUserId(APIView):
     authentication_classes = [JWTAuthentication]
+
     def get(self, request):
         user = request.user
-        return Response({"id": user.id})
+        get_profile_id = UserClientProfile.objects.get(user=user.id)
+        return Response({"id": get_profile_id.id})
