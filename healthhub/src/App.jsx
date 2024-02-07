@@ -12,6 +12,7 @@ import Nutrition from './pages/Nutrition/nutrition'
 import Medicinedetails from './pages/MedicineDetails/medicinedetails'
 import HelpPage from './pages/helpPage/helpPage'
 import Bimpage from './pages/BIMpage/bimpage'
+import ChatBot from './pages/Chatbot/chatBot'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path='medicine' element={<Medicinedetails />} />
             <Route path='help' element={<HelpPage />} />
             <Route path='bim' element={<Bimpage />} />
+            <Route path='bot' element={<ChatBot />} />
           </Route>
           <Route path='/signup' element={<Signup />} />
           <Route path='/signin' element={<LoginPage />} />
