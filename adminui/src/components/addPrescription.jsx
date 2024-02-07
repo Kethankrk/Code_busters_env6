@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 function AddPrescription({ doctors, addpres }) {
   const [description, setDescription] = useState('')
+  const [medicine, setMedicine] = useState('')
   const [patient, setPatient] = useState([])
   const [selectedPatient, setSelectedPatient] = useState(0)
   const [selectedDoctor, setSelectedDoctor] = useState(0)
@@ -17,7 +18,7 @@ function AddPrescription({ doctors, addpres }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     console.log(description, selectedDoctor, selectedPatient)
-    if ((!description, !selectedDoctor, !selectedPatient)) return
+    if ((!description, !selectedDoctor, !selectedPatient, !medicine)) return
 
     try {
       const hospitalId = localStorage.getItem('hospitalId')
@@ -30,7 +31,17 @@ function AddPrescription({ doctors, addpres }) {
       const api = import.meta.env.VITE_API
 
       const res = await axios.post(`${api}patient/prescription/`, req)
-      console.log(res.data)
+      const presId = res.data.id
+
+      const local_med = medicine.split(',')
+
+      const data = {
+        name: local_med,
+        prescription: presId,
+      }
+      const final_res = await axios.post(`${api}patient/medicine/`, data)
+      console.log(final_res.data)
+
       addpres(false)
     } catch (error) {
       alert(error)
@@ -88,6 +99,19 @@ function AddPrescription({ doctors, addpres }) {
             className='w-full px-3 py-2 rounded-md bg-gray-600 outline-none border border-gray-900 text-white'
             onChange={(e) => setDescription(e.target.value)}
             value={description}
+          />
+        </div>
+        <div className='mb-5'>
+          <label className='block mb-2 text-gray-300'>Medicines</label>
+          <input
+            required
+            type='text'
+            name='name'
+            id='name'
+            placeholder='Enter docotor name'
+            className='w-full px-3 py-2 rounded-md bg-gray-600 outline-none border border-gray-900 text-white'
+            onChange={(e) => setMedicine(e.target.value)}
+            value={medicine}
           />
         </div>
 

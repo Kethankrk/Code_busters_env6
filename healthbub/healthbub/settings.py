@@ -138,13 +138,14 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173", # Add the origins you want to allow
-    "http://localhost:5174", 
+    "http://localhost:5173",  # Add the origins you want to allow
+    "http://localhost:5174",
+    "https://tmpv6sxw-8000.inc1.devtunnels.ms",
 ]
 
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=100),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=500),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,

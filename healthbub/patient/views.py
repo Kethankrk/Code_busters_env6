@@ -19,10 +19,12 @@ class MedicineVew(APIView):
 
     def post(self, request):
         data = request.data
+        pes_id = data["prescription"]
+        print(data)
         final_list = []
-        for item in data:
-            print(item)
-            med_ser = MedicineSerializer(data=item)
+        for name in data["name"]:
+            print(name)
+            med_ser = MedicineSerializer(data={"name": name, "prescription": pes_id})
             if not med_ser.is_valid():
                 return Response({"error": "bad request"})
 
@@ -33,14 +35,18 @@ class MedicineVew(APIView):
 
 
 class GetPrescription(APIView):
-    def get(self, request):
+    def post(self, request):
+        data = request.data.get("id")
+        if not data:
+            return Response({"error": "bad request"})
         final_list = []
-        data = Prescription.objects.all()
+        data = Prescription.objects.filter(patient=data)
 
         for item in data:
             obj = {
                 "description": item.description,
                 "doctor": item.doctor.name,
+                "patient": item.patient.id,
             }
             med = Medicine.objects.filter(prescription=item)
             med_s = MedicineSerializer(med, many=True)

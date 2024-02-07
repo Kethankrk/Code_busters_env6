@@ -109,8 +109,8 @@ function HomePage() {
         )}
         {userReq.map((item, index) => (
           <RequestsCard
-            patient={item.patient}
-            doctor={item.doctor}
+            patient={item.patient.phone}
+            doctor={item.doctor.name}
             num={index}
           />
         ))}
