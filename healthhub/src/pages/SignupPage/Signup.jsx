@@ -26,24 +26,20 @@ const Signup = () => {
       email: Email,
       role: 'patient',
     }
+    const api = import.meta.env.VITE_API
 
-    const res = await axios.post('http://localhost:8000/api/signup/', userData)
+    const res = await axios.post(`${api}api/signup/`, userData)
     const userId = res.data.id
     userData['user'] = userId
 
-    const profile = await axios.post(
-      'http://localhost:8000/api/patient/profile/',
-      userData,
-    )
+    const profile = await axios.post(`${api}api/patient/profile/`, userData)
     console.log(profile.data)
     console.log(res.data)
     const cred = {
       phone: Phone,
       password: Password,
     }
-    const tokens = await (
-      await axios.post('http://localhost:8000/login/', cred)
-    ).data
+    const tokens = await (await axios.post(`${api}login/`, cred)).data
     localStorage.setItem('token', tokens.access)
     localStorage.setItem('refreshToken', tokens.refresh)
     localStorage.setItem('name', Name)
