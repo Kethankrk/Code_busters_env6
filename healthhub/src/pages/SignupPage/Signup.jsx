@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import axios from 'axios'
 
@@ -169,13 +169,11 @@ const Signup = () => {
           </button>
           <p className='px-6 text-sm text-center text-gray-600'>
             Is you have an account already?
-            <a
-              rel='noopener noreferrer'
-              href='#'
+            <Link to="/signin"
               className='hover:underline text-violet-600'
             >
               Sign in
-            </a>
+            </Link>
             .
           </p>
         </div>

@@ -14,7 +14,7 @@ const ChatBot = () => {
         </div>  
         <div className="w-52 bg-white h-7 absolute bottom-32   left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
             <iframe
-src="https://www.chatbase.co/chatbot-iframe/seAx6ShZsdaJKWmhEvuYl"
+src="https://www.chatbase.co/chatbot-iframe/LYCqhynswbbvq11OPLUrs"
 width="100%"
 height={window.innerHeight - 200}
 frameborder="0"
