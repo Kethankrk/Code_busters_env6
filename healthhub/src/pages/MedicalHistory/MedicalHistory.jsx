@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import medichistory from '../../assets/medichistory.png'
 import { useEffect } from 'react'
 import axios from 'axios'
 const MedicalHistory = () => {
+  const [data,setdata]= useState([])
   useEffect(() => {
     ;(async () => {
       const token = localStorage.getItem('token')
@@ -17,13 +18,14 @@ const MedicalHistory = () => {
         console.log(userId)
       const data = (
         await axios.post(`${api}patient/prescription/get/`, {
-          id: userId,
+          id: 3,
         })
       ).data
 
+      setdata(data)
       console.log(data)
     })()
-  })
+  },[])
 
   const testdata = [
     {
@@ -58,24 +60,22 @@ const MedicalHistory = () => {
             <p> Collect your recent medical report</p>
           </div>
         </div>
-        {testdata.reverse().map((e) => (
+        {data.reverse().map((e) => (
           <div className='w-full flex  flex-col p-5 gap-3 shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] mt-5 rounded-xl'>
             <h1 className=''>
               <span className='font-bold'>Docter name :</span> Dr.{e.doctor}
             </h1>
             <h1 className=''>
-              <span className='font-bold'>Date :</span> Date
+              {/* <span className='font-bold'>Date :</span> {e.data} */}
             </h1>
             <h1>
               <span className='font-bold'>Description :</span> {e.description}
             </h1>
-            <div className='flex gap-7'>
+            <div className='flex gap-2'>
               <h1 className='font-bold'>Medicines :</h1>
-              <ul className='list-disc'>
                 {e.medicine.map((j) => (
-                  <li>{j.name}</li>
+                  <span>{j.name},</span>
                 ))}
-              </ul>
             </div>
           </div>
         ))}

@@ -140,7 +140,8 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Add the origins you want to allow
     "http://localhost:5174",
-    "https://tmpv6sxw-8000.inc1.devtunnels.ms",
+    "https://dane-brief-sheep.ngrok-free.app",
+    "https://qgbk7vxz-5173.inc1.devtunnels.ms"
 ]
 
 
