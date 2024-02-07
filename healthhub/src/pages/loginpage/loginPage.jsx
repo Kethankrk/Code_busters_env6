@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../../assets/logo.png'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate ,Link} from 'react-router-dom'
 const LoginPage = () => {
   const [number, setNumber] = useState('')
   const [password, setpassword] = useState('')
@@ -89,13 +89,11 @@ const LoginPage = () => {
         </div>
         <p className='px-6 text-sm text-center text-gray-600'>
           Don't have an account yet?
-          <a
-            rel='noopener noreferrer'
-            href='#'
+          <Link to="/signup"
             className='hover:underline text-violet-600'
           >
             Sign up
-          </a>
+          </Link>
           .
         </p>
       </form>

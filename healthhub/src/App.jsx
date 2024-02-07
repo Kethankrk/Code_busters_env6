@@ -13,6 +13,8 @@ import Medicinedetails from './pages/MedicineDetails/medicinedetails'
 import HelpPage from './pages/helpPage/helpPage'
 import Bimpage from './pages/BIMpage/bimpage'
 import ChatBot from './pages/Chatbot/chatBot'
+import MedicalHistory from './pages/MedicalHistory/MedicalHistory'
+import FecilitySearch from './pages/Fecilitysearch/fecilitySearch'
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
             <Route path='help' element={<HelpPage />} />
             <Route path='bim' element={<Bimpage />} />
             <Route path='bot' element={<ChatBot />} />
+            <Route path='history' element={<MedicalHistory />} />
+            <Route path='fecilitysearch' element={<FecilitySearch/>} />
           </Route>
           <Route path='/signup' element={<Signup />} />
           <Route path='/signin' element={<LoginPage />} />
