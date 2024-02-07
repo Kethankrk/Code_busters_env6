@@ -94,7 +94,7 @@ const LoginPage = () => {
           Don't have an account yet?
           <a
             rel='noopener noreferrer'
-            href='#'
+            href='/signup'
             className='hover:underline text-violet-600'
           >
             Sign up

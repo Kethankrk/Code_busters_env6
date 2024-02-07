@@ -7,7 +7,8 @@ from .serialzier import (
 from rest_framework.response import Response
 from .models import Medicine, Prescription
 from rest_framework.generics import ListAPIView, CreateAPIView
-from users.models import Employee
+from users.models import Employee, CustomUser, UserClientProfile
+
 
 class PrescriptionView(CreateAPIView):
     queryset = Prescription.objects.all()
@@ -43,8 +44,17 @@ class GetPrescription(APIView):
             }
             med = Medicine.objects.filter(prescription=item)
             med_s = MedicineSerializer(med, many=True)
-            obj['medicine'] = med_s.data
+            obj["medicine"] = med_s.data
             final_list.append(obj)
 
-
         return Response(final_list)
+
+
+class GetPatients(APIView):
+    def get(self, request):
+        users = CustomUser.objects.filter(role="patient")
+        final_list = []
+        for user in users:
+            profile = UserClientProfile.objects.get(user=user.id)
+            final_list.append({"id": user.id, "name": profile.name})
+        return Response({"user": final_list})
