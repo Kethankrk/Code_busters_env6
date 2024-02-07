@@ -4,10 +4,12 @@ import RequestsCard from '../components/requestsCard'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import AddDoctor from '../components/addDoctor'
+import AddPrescription from '../components/addPrescription'
 
 function HomePage() {
   const [userReq, setUserReq] = useState([])
   const [addDoctor, setAddDoctor] = useState(false)
+  const [addPrescripton, setAddPrescription] = useState(false)
   const [doctor, setDoctor] = useState([])
   const navigation = useNavigate()
 
@@ -53,10 +55,10 @@ function HomePage() {
       </div>
       <div
         className={`absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-55 flex justify-center items-center z-10 ${
-          addDoctor ? 'visible' : 'hidden'
+          addPrescripton ? 'visible' : 'hidden'
         }`}
       >
-        <AddDoctor setAddDoctor={setAddDoctor} />
+        <AddPrescription doctors={doctor} addpres={setAddPrescription}/>
       </div>
       <div className='bg-slate-800 p-10 flex flex-col gap-10 w-1/6 relative'>
         <div className='bg-slate-700 px-5 py-2 rounded-lg flex justify-center hover:scale-105'>
@@ -73,7 +75,7 @@ function HomePage() {
           </button>
         </div>
         <div className='bg-slate-700 px-5 py-2 rounded-lg flex justify-center hover:scale-105'>
-          <button className='text-white text-sm font-medium'>
+          <button className='text-white text-sm font-medium' onClick={() => setAddPrescription(true)}>
             Add prescription
           </button>
         </div>
