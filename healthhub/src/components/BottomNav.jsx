@@ -20,12 +20,15 @@ const BottomNav = () => {
         </Link>
         <h1 className='text-sm font-bold'> services</h1>
       </div>
-      <div className='flex flex-col opacity-50 hover:opacity-100 items-center'>
+      <Link
+        to='/help'
+        className='flex flex-col opacity-50 hover:opacity-100 items-center'
+      >
         <div className='icons w-8'>
           <img src={helpIcon} alt='' srcset='' />
         </div>
         <h1 className='text-sm font-bold'> Help</h1>
-      </div>
+      </Link>
       <div className='flex flex-col opacity-50 hover:opacity-100 items-center'>
         <div className='icons w-8'>
           <img src={userIcon} alt='' srcset='' />
